@@ -23,7 +23,8 @@ export default class lilDictionary extends Component {
                Input your vocab: 
             </Text>
 
-            <TextInput style = { styles.input } value={this.state.input}/>
+            <TextInput style = { styles.input } value= {this.state.input} 
+            onChangeText={(e) => this.setState({input: e})}/>
 
             <Text style = { styles.inputText }>
                Definition: 
@@ -31,6 +32,10 @@ export default class lilDictionary extends Component {
 
             <Text>
                { this.state.output }
+            </Text>
+
+            <Text>
+               { this.state.input }
             </Text>
            
         </View>
