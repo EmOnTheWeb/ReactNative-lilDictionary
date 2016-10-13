@@ -13,9 +13,11 @@ import {
   TextInput,
 } from 'react-native';
 
+var dictionary = require('./dictionary.json');
+
 
 export default class lilDictionary extends Component {
-      
+     
   render() {
     return (
        <View style = { styles.parent } >
@@ -24,39 +26,53 @@ export default class lilDictionary extends Component {
             </Text>
 
             <TextInput style = { styles.input } value= {this.state.input} 
-            onChangeText={(e) => this.setState({input: e})}/>
+            onChangeText={(e) => this.setState({input: e})} />
 
             <Text style = { styles.inputText }>
                Definition: 
             </Text>
 
-            <Text>
+            <Text style = { styles.outputText } onPress={() => this._showMeaning()} >
                { this.state.output }
-            </Text>
-
-            <Text>
-               { this.state.input }
             </Text>
            
         </View>
     );
   }
 
-constructor (props) {
-    super(props)
-    this.state = {
-      input: 'enter word here',
-      output: '',
-    }; 
+    constructor (props) {
+      super(props)
+      this.state = {
+        input: 'enter word here',
+        output: '',
+      }; 
+   }
+
+  _showMeaning() {
+  
+    var meaning = this.state.input in dictionary ? 
+                    dictionary[this.state.input] : 
+                    "Not Found";
+
+          alert(this.state.input
+          ); 
+ 
+    this.setState({
+         output: meaning 
+    });
   }
+
+
+
+
+
 
 
 
 }
 
 const styles = StyleSheet.create({
- 
-   
+
     parent: {
 
         flex:1,
@@ -72,9 +88,15 @@ const styles = StyleSheet.create({
   
     input: {
 
-         marginBottom: 20
+        marginBottom: 20
 
     },
+
+    outputText: {
+
+        backgroundColor: 'red',
+        height: 30
+    }
 });
 
 
