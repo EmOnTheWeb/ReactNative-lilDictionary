@@ -9,32 +9,55 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  TextInput,
 } from 'react-native';
 
-var Dictionary = React.createClass({
+
+export default class lilDictionary extends Component {
+      
+  render() {
+    return (
+       <View style = { styles.parent } >
+            <Text>
+                Type something in English:
+            </Text>
+
+            <TextInput/>
+          
+
+            <Text style = { styles.germanLabel } >
+                Its German equivalent is:
+            </Text>
+
+            <Text style = { styles.germanWord } >                
+            </Text>
+           
+        </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
  
-      render: function() {
-        var layout =
-            <React.View style = { styles.parent } >
-     
-                <React.Text>
-                    Type something in English:
-                </React.Text>
-     
-                <React.TextInput />
-     
-                <React.Text style = { styles.germanLabel } >
-                    Its German equivalent is:
-                </React.Text>
-     
-                <React.Text style = { styles.germanWord } >                
-                </React.Text>
-               
-            </React.View>
-        ;
-        return layout;
-    }, 
+   
+    parent: {
+        padding: 16
+    },
+ 
+   
+    germanLabel: {
+        marginTop: 20,
+        fontWeight: 'bold'
+    },
+ 
+  
+    germanWord: {
+        marginTop: 15,
+        fontSize: 30,
+        fontStyle: 'italic'
+    },
 });
 
-AppRegistry.registerComponent('lilDictionary', () => Dictionary);
+
+AppRegistry.registerComponent('lilDictionary', () => lilDictionary);
