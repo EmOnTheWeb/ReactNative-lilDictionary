@@ -62,12 +62,13 @@ const styles = StyleSheet.create({
     inputText: {
 
         fontSize: 18
-
+       
     },
   
     input: {
 
-      
+         marginBottom: 20
+
     },
 });
 
