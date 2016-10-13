@@ -20,18 +20,10 @@ export default class lilDictionary extends Component {
     return (
        <View style = { styles.parent } >
             <Text>
-                Type something in English:
+               Input your vocab: 
             </Text>
 
-            <TextInput/>
-          
-
-            <Text style = { styles.germanLabel } >
-                Its German equivalent is:
-            </Text>
-
-            <Text style = { styles.germanWord } >                
-            </Text>
+            <TextInput style = { styles.input } />
            
         </View>
     );
@@ -42,20 +34,18 @@ const styles = StyleSheet.create({
  
    
     parent: {
+
+        flex:1,
+        justifyContent: 'center',
         padding: 16
     },
  
    
-    germanLabel: {
-        marginTop: 20,
-        fontWeight: 'bold'
-    },
- 
-  
-    germanWord: {
-        marginTop: 15,
-        fontSize: 30,
-        fontStyle: 'italic'
+   
+
+    input: {
+
+      
     },
 });
 
