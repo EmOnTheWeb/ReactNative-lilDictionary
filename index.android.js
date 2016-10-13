@@ -19,15 +19,34 @@ export default class lilDictionary extends Component {
   render() {
     return (
        <View style = { styles.parent } >
-            <Text>
+            <Text style = { styles.inputText }>
                Input your vocab: 
             </Text>
 
-            <TextInput style = { styles.input } />
+            <TextInput style = { styles.input } value={this.state.input}/>
+
+            <Text style = { styles.inputText }>
+               Definition: 
+            </Text>
+
+            <Text>
+               { this.state.output }
+            </Text>
            
         </View>
     );
   }
+
+constructor (props) {
+    super(props)
+    this.state = {
+      input: 'enter word here',
+      output: '',
+    }; 
+  }
+
+
+
 }
 
 const styles = StyleSheet.create({
@@ -39,10 +58,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 16
     },
- 
-   
-   
+    
+    inputText: {
 
+        fontSize: 18
+
+    },
+  
     input: {
 
       
