@@ -43,19 +43,18 @@ export default class lilDictionary extends Component {
     constructor (props) {
       super(props)
       this.state = {
-        input: 'enter word here',
+        input: '',
         output: '',
       }; 
    }
 
   _showMeaning() {
-  
-    var meaning = this.state.input in dictionary ? 
-                    dictionary[this.state.input] : 
-                    "Not Found";
 
-          alert(this.state.input
-          ); 
+    var uppercaseVocab = this.state.input.toString().toUpperCase();  
+    
+    var meaning = uppercaseVocab in dictionary ? 
+                    dictionary[uppercaseVocab] : 
+                    "Not Found";
  
     this.setState({
          output: meaning 
