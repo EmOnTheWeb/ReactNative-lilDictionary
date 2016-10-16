@@ -25,14 +25,16 @@ export default class lilDictionary extends Component {
                Input your vocab: 
             </Text>
 
-            <TextInput style = { styles.input } value= {this.state.input} 
-            onChangeText={(e) => this.setState({input: e})} />
+            <TextInput style = { styles.input } 
+                       value= {this.state.input} 
+                       onChangeText={(e) => this.setState({input: e})} 
+                       onSubmitEditing = {() => this._showMeaning()} />
 
             <Text style = { styles.inputText }>
                Definition: 
             </Text>
 
-            <Text style = { styles.outputText } onPress={() => this._showMeaning()} >
+            <Text style = { styles.outputText } >
                { this.state.output }
             </Text>
            
@@ -60,14 +62,6 @@ export default class lilDictionary extends Component {
          output: meaning 
     });
   }
-
-
-
-
-
-
-
-
 }
 
 const styles = StyleSheet.create({
