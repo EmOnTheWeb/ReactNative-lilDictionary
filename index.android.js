@@ -37,16 +37,23 @@ export default class lilDictionary extends Component {
             <Text style = { styles.outputText } >
                { this.state.output }
             </Text>
+
+          
+            <View style = { styles.button } >
+              <Text>Button</Text>
+            </View>
+        
            
         </View>
     );
   }
 
-    constructor (props) {
+  constructor (props) {
       super(props)
       this.state = {
         input: '',
         output: '',
+        saved: ''
       }; 
    }
 
@@ -62,6 +69,18 @@ export default class lilDictionary extends Component {
          output: meaning 
     });
   }
+
+  _saveVocab(vocab, definition) {
+
+      AsyncStorage.setItem(vocab, definition); 
+      this.setState({saved: 'definition of' + vocab + 'has been saved'}); 
+
+
+
+  }
+
+
+
 }
 
 const styles = StyleSheet.create({
@@ -89,6 +108,13 @@ const styles = StyleSheet.create({
 
       paddingTop: 16
    
+    },
+
+    button: {
+
+
+      justifyContent: 'flex-end'
+
     }
 });
 
