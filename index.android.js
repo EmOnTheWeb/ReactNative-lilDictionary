@@ -71,12 +71,12 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent: 'center',
         padding: 16
-
     },
     
     inputText: {
 
-        fontSize: 18    
+        fontSize: 18
+       
     },
   
     input: {
@@ -87,8 +87,8 @@ const styles = StyleSheet.create({
 
     outputText: {
 
-      paddingTop: 16
-   
+        backgroundColor: 'red',
+        height: 30
     }
 });
 
