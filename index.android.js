@@ -32,7 +32,7 @@ export default class lilDictionary extends Component {
 
             <View style = {styles.container} >
                <Text style = { styles.definition }> Definition: </Text>   
-               <Text style = { styles.saveButton }>Button</Text>
+               <Text style = { styles.saveButton }>Save</Text>
             </View>
             
 
@@ -118,10 +118,12 @@ const styles = StyleSheet.create({
    
     },
 
-    button: {
+    saveButton: {
 
-      alignSelf: 'flex-start'
-      
+      backgroundColor: 'gray',
+      borderRadius: 10,
+      padding:5,
+      color:'white'
     }
 });
 
