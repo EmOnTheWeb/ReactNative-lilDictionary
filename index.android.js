@@ -30,20 +30,16 @@ export default class lilDictionary extends Component {
                        onChangeText={(e) => this.setState({input: e})} 
                        onSubmitEditing = {() => this._showMeaning()} />
 
-            <Text style = { styles.inputText }>
-               Definition: 
-            </Text>
+            <View style = {styles.container} >
+               <Text style = { styles.definition }> Definition: </Text>   
+               <Text style = { styles.saveButton }>Button</Text>
+            </View>
+            
 
             <Text style = { styles.outputText } >
                { this.state.output }
             </Text>
-
-          
-            <View style = { styles.button } >
-              <Text>Button</Text>
-            </View>
-        
-           
+               
         </View>
     );
   }
@@ -92,10 +88,22 @@ const styles = StyleSheet.create({
         padding: 16
 
     },
+
+    container: {
+
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+
+    },
     
     inputText: {
 
         fontSize: 18    
+    },
+
+    definition: {
+
+        fontSize: 18
     },
   
     input: {
@@ -112,9 +120,8 @@ const styles = StyleSheet.create({
 
     button: {
 
-
-      justifyContent: 'flex-end'
-
+      alignSelf: 'flex-start'
+      
     }
 });
 
