@@ -78,7 +78,19 @@ export default class lilDictionary extends Component {
       var definition = this.state.output.toString(); 
 
         if(definition.toLowerCase() !== '' && definition.toLowerCase() !== 'not found') {
-          AsyncStorage.setItem(vocab, definition);
+
+          let vocabDefinitionPair = {
+
+            vocab: vocab,
+
+            definition: definition
+
+
+          };
+
+          console.log(vocabDefinitionPair); 
+
+          AsyncStorage.setItem('savedVocab', JSON.stringify(vocabDefinitionPair));
           this.setState({save: 'Saved!'}); 
         }
         else {
