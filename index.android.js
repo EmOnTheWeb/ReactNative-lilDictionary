@@ -28,8 +28,9 @@ export default class lilDictionary extends Component {
 
             <TextInput style = { styles.input } 
                        value= {this.state.input} 
-                       onChangeText={(e) => this.setState({input: e, save: 'Save'})} 
+                       onChangeText={(e) => this.setState({input: e, save: 'Save', warning: ''})} 
                        onSubmitEditing = {() => this._showMeaning()} />
+            <Text style = {styles.warning} > { this.state.warning } </Text>
 
             <View style = {styles.container} >
                <Text style = { styles.definition }> Definition: </Text>   
@@ -53,7 +54,8 @@ export default class lilDictionary extends Component {
       this.state = {
         input: '',
         output: '',
-        save: 'Save'
+        save: 'Save',
+        warning: ''
       }; 
    }
 
@@ -74,9 +76,14 @@ export default class lilDictionary extends Component {
 
       var vocab = this.state.input.toString(); 
       var definition = this.state.output.toString(); 
-      AsyncStorage.setItem(vocab, definition);
-      this.setState({save: 'Saved!'}); 
 
+        if(definition.toLowerCase() !== '' && definition.toLowerCase() !== 'not found') {
+          AsyncStorage.setItem(vocab, definition);
+          this.setState({save: 'Saved!'}); 
+        }
+        else {
+          this.setState({warning:'This is not a vocab'}); 
+        }
   }
 }
 
@@ -109,6 +116,14 @@ const styles = StyleSheet.create({
   
     input: {
 
+        
+
+    },
+
+    warning: {
+
+        fontSize:14,
+        color: 'red',
         marginBottom: 20
 
     },
