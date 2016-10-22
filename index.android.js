@@ -11,6 +11,7 @@ import {
   Text,
   View,
   TextInput,
+  AsyncStorage,
 } from 'react-native';
 
 var dictionary = require('./dictionary.json');
@@ -27,12 +28,15 @@ export default class lilDictionary extends Component {
 
             <TextInput style = { styles.input } 
                        value= {this.state.input} 
-                       onChangeText={(e) => this.setState({input: e})} 
+                       onChangeText={(e) => this.setState({input: e, save: 'Save'})} 
                        onSubmitEditing = {() => this._showMeaning()} />
 
             <View style = {styles.container} >
                <Text style = { styles.definition }> Definition: </Text>   
-               <Text style = { styles.saveButton }>Save</Text>
+               <Text style = { styles.saveButton } 
+                     onPress = { () => this._saveVocab() }>
+                  { this.state.save }
+               </Text>
             </View>
             
 
@@ -49,7 +53,7 @@ export default class lilDictionary extends Component {
       this.state = {
         input: '',
         output: '',
-        saved: ''
+        save: 'Save'
       }; 
    }
 
@@ -66,17 +70,14 @@ export default class lilDictionary extends Component {
     });
   }
 
-  _saveVocab(vocab, definition) {
+  _saveVocab() {
 
-      AsyncStorage.setItem(vocab, definition); 
-      this.setState({saved: 'definition of' + vocab + 'has been saved'}); 
-
-
+      var vocab = this.state.input.toString(); 
+      var definition = this.state.output.toString(); 
+      AsyncStorage.setItem(vocab, definition);
+      this.setState({save: 'Saved!'}); 
 
   }
-
-
-
 }
 
 const styles = StyleSheet.create({
